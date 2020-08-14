@@ -21,7 +21,7 @@ def main():
         'bedtime_start_delta': {'type': 'integer'},
         'bedtime_end_delta': {'type': 'integer'},
         'awake': {'type': 'integer'},
-        'breath_average': {'type': {'type': 'number'}},
+        'breath_average': {'type': 'number'},
         'deep': {'type': 'integer'},
         'duration': {'type': 'integer'},
         'efficiency': {'type': 'integer'},
