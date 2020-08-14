@@ -47,7 +47,7 @@ def main():
         'score_latency': {'type': 'integer'},
         'score_rem': {'type': 'integer'},
         'score_total': {'type': 'integer'},
-        'summary_date': 'string',
+        'summary_date': {'type': 'string'},
         'temperature_delta': {'type': 'number'},
         'temperature_deviation': {'type': 'number'},
         'temperature_trend_deviation': {'type': 'number'},
