@@ -28,7 +28,7 @@ def main():
         "hr_5min": {"type": ["null", "array"], "items": {"type": ["null", "integer"]}},
         'hr_average': {'type': 'number'},
         'hr_lowest': {'type': 'integer'},
-        'hypnogram_5min': {'type': 'object'},
+        'hypnogram_5min': {'type': 'string'},
         'is_longest': {'type': 'integer'},
         'light': {'type': 'integer'},
         'midpoint_at_delta': {'type': 'integer'},
@@ -62,5 +62,5 @@ def main():
   sleeps = resp.json()['sleep']
 
   for sleep in sleeps:
-    singer.write_record('sleep', sleep)
+    singer.write_record('sleeps', sleep)
 
