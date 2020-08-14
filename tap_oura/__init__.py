@@ -11,7 +11,7 @@ def main():
   config = args.config
   
   access_token = config['access_token'] 
-  start_date = confg['start_date']
+  start_date = config['start_date']
 
   schema = {'type': 'object',
     'properties':
