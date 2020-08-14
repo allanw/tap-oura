@@ -2,7 +2,7 @@ import singer
 import requests
 import json
 
-REQUIRED_CONFIG_KEYS = ["access_token"]
+REQUIRED_CONFIG_KEYS = ["access_token", "start_date"]
 
 def main():
 
