@@ -4,16 +4,7 @@ import json
 
 REQUIRED_CONFIG_KEYS = ["access_token", "start_date"]
 
-def main():
-
-  args = singer.utils.parse_args(REQUIRED_CONFIG_KEYS)
-
-  config = args.config
-  
-  access_token = config['access_token'] 
-  start_date = config['start_date']
-
-  schema = {'type': 'object',
+schema = {'type': 'object',
     'properties':
       {
         'bedtime_start': {'type': 'string', 'format': 'date-time'},
@@ -55,6 +46,30 @@ def main():
         'total': {'type': 'number'}
       }}
 
+def get_catalog(schema):
+  streams = []
+
+  for schema_name, schema in schema['properties'].items():
+    catalog_entry = {
+            'stream': schema_name,
+            'tap_stream_id': schema_name,
+            'schema': schema,
+            'metadata': [], 
+            'key_properties': 'summary_date' 
+    }
+    streams.append(catalog_entry) 
+
+  return {'streams': streams}
+
+def do_discover(schema):
+  catalog = get_catalog(schema)
+  print(json.dumps(catalog, indent=2))
+
+def do_sync(config, schema):
+
+  access_token = config['access_token'] 
+  start_date = config['start_date']
+
   singer.write_schema('sleeps', schema, 'summary_date')
 
   resp = requests.get('https://api.ouraring.com/v1/sleep?start=%s&access_token=%s' % (start_date, access_token))
@@ -64,3 +79,13 @@ def main():
   for sleep in sleeps:
     singer.write_record('sleeps', sleep)
 
+def main():
+  args = singer.utils.parse_args(REQUIRED_CONFIG_KEYS)
+
+  if args.discover:
+    do_discover(schema)
+  else:
+    do_sync(args.config, schema)
+
+if __name__ == '__main__':
+  main()
