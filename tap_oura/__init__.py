@@ -72,7 +72,9 @@ def do_sync(config, schema):
 
   singer.write_schema('sleeps', schema, 'summary_date')
 
-  resp = requests.get('https://api.ouraring.com/v1/sleep?start=%s&access_token=%s' % (start_date, access_token))
+  headers = {"Authorization": f"Bearer {access_token}"}
+
+  resp = requests.get('https://api.ouraring.com/v2/usercollection/sleep?start=%s' % (start_date))
 
   sleeps = resp.json()['sleep']
 
