@@ -44,7 +44,7 @@ schema = {'type': 'object',
         'temperature_deviation': {'type': 'number'},
         'temperature_trend_deviation': {'type': 'number'},
         'timezone': {'type': 'number'},
-        'total': {'type': 'number'}
+        'total_sleep_duration': {'type': 'number'}
       }}
 
 def get_catalog(schema):
