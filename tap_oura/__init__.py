@@ -74,9 +74,9 @@ def do_sync(config, schema):
 
   headers = {"Authorization": f"Bearer {access_token}"}
 
-  resp = requests.get('https://api.ouraring.com/v2/usercollection/sleep?start=%s' % (start_date))
+  resp = requests.get('https://api.ouraring.com/v2/usercollection/sleep?start_date=%s' % (start_date))
 
-  sleeps = resp.json()['sleep']
+  sleeps = resp.json()['data']
 
   for sleep in sleeps:
     singer.write_record('sleeps', sleep)
