@@ -7,6 +7,7 @@ REQUIRED_CONFIG_KEYS = ["access_token", "start_date"]
 schema = {'type': 'object',
     'properties':
       {
+        'id': {'type': 'string'},
         'bedtime_start': {'type': 'string', 'format': 'date-time'},
         'bedtime_end': {'type': 'string', 'format': 'date-time'},
         'bedtime_start_delta': {'type': 'integer'},
@@ -55,7 +56,7 @@ def get_catalog(schema):
             'tap_stream_id': schema_name,
             'schema': schema,
             'metadata': [], 
-            'key_properties': 'summary_date' 
+            'key_properties': 'id' 
     }
     streams.append(catalog_entry) 
 
@@ -70,7 +71,7 @@ def do_sync(config, schema):
   access_token = config['access_token'] 
   start_date = config['start_date']
 
-  singer.write_schema('sleeps', schema, 'summary_date')
+  singer.write_schema('sleeps', schema, 'id')
 
   headers = {"Authorization": f"Bearer {access_token}"}
 
