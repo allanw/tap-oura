@@ -18,7 +18,7 @@ schema = {'type': 'object',
         'average_heart_rate': {'type': 'number'},
         'lowest_heart_rate': {'type': 'number'},
         'average_hrv': {'type': 'number'},
-        'sleep_analysis_reason': "foreground_sleep_analysis",
+        'sleep_analysis_reason': {"type": "string"},
         'period': {'type': 'number'},
         'deep_sleep_duration': {'type': 'integer'},
         'light_sleep_duration': {'type': 'integer'},
@@ -34,9 +34,23 @@ schema = {'type': 'object',
         'time_in_bed': {'type': 'number'},
         'type': {'type': 'string'},
         'latency': {'type': 'number'},
-        'readiness': {},
         'awake_time': {'type': 'number'},
-        'readiness_score_delta': {'type': 'number'}
+        'readiness_score_delta': {'type': 'number'},
+        'readiness': {
+          "contributors": {
+            "activity_balance": {'type': 'number'},
+            "body_temperature": {'type': 'number'},
+            "hrv_balance": {'type': 'number'},
+            "previous_day_activity": {'type': 'number'},
+            "previous_night": {'type': 'number'},
+            "recovery_index": {'type': 'number'},
+            "resting_heart_rate": {'type': 'number'},
+            "sleep_balance": {'type': 'number'}
+          },
+          "score": {'type': 'number'},
+          "temperature_deviation": {'type': 'number'},
+          "temperature_trend_deviation": {'type': 'number'}
+        }
       }}
 
 def get_catalog(schema):
