@@ -4,54 +4,55 @@ import json
 
 REQUIRED_CONFIG_KEYS = ["access_token", "start_date"]
 
-schema = {'type': 'object',
-    'properties':
-      {
-        'id': {'type': 'string'},
-        'day': {'type': 'string'},
-        'bedtime_start': {'type': 'string', 'format': 'date-time'},
-        'bedtime_end': {'type': 'string', 'format': 'date-time'},
-        'awake': {'type': 'integer'},
-        'average_breath': {'type': 'number'},
-        'heart_rate': {'interval': 'number', "item": {"type": ["null", "integer"]}, "timestamp": "string"},
-        'hrv': {'interval': 'number', "item": {"type": ["null", "integer"]}, "timestamp": "string"},
-        'average_heart_rate': {'type': 'number'},
-        'lowest_heart_rate': {'type': 'number'},
-        'average_hrv': {'type': 'number'},
-        'sleep_analysis_reason': {"type": "string"},
-        'period': {'type': 'number'},
-        'deep_sleep_duration': {'type': 'integer'},
-        'light_sleep_duration': {'type': 'integer'},
-        'restless_periods': {'type': 'integer'},
-        'rem_sleep_duration': {'type': 'integer'},
-        'sleep_algorithm_version': {'type': 'string'},
-        'low_battery_alert': {"type": "boolean"},
-        'sleep_score_delta': {'type': 'integer'},
-        'movement_30_sec': {'type': 'string'},
-        'sleep_phase_5_min': {'type': 'string'},
-        'efficiency': {'type': 'integer'},
-        'total_sleep_duration': {'type': 'number'},
-        'time_in_bed': {'type': 'number'},
-        'type': {'type': 'string'},
-        'latency': {'type': 'number'},
-        'awake_time': {'type': 'number'},
-        'readiness_score_delta': {'type': 'number'},
-        'readiness': {
-          "contributors": {
-            "activity_balance": {'type': 'number'},
-            "body_temperature": {'type': 'number'},
-            "hrv_balance": {'type': 'number'},
-            "previous_day_activity": {'type': 'number'},
-            "previous_night": {'type': 'number'},
-            "recovery_index": {'type': 'number'},
-            "resting_heart_rate": {'type': 'number'},
-            "sleep_balance": {'type': 'number'}
-          },
-          "score": {'type': 'number'},
-          "temperature_deviation": {'type': 'number'},
-          "temperature_trend_deviation": {'type': 'number'}
-        }
-      }}
+schema = {
+  "type": "object",
+  "properties": {
+    "id": { "type": ["null", "string"] },
+    "day": { "type": ["null", "string"] },
+    "bedtime_start": { "type": ["null", "string"], "format": "date-time" },
+    "bedtime_end": { "type": ["null", "string"], "format": "date-time" },
+    "awake": { "type": ["null", "integer"] },
+    "average_breath": { "type": ["null", "number"] },
+    "heart_rate": { "interval": "number", "item": { "type": ["null", "integer"] }, "timestamp": "string" },
+    "hrv": { "interval": "number", "item": { "type": ["null", "integer"] }, "timestamp": "string" },
+    "average_heart_rate": { "type": ["null", "number"] },
+    "lowest_heart_rate": { "type": ["null", "number"] },
+    "average_hrv": { "type": ["null", "number"] },
+    "sleep_analysis_reason": { "type": ["null", "string"] },
+    "period": { "type": ["null", "number"] },
+    "deep_sleep_duration": { "type": ["null", "integer"] },
+    "light_sleep_duration": { "type": ["null", "integer"] },
+    "restless_periods": { "type": ["null", "integer"] },
+    "rem_sleep_duration": { "type": ["null", "integer"] },
+    "sleep_algorithm_version": { "type": ["null", "string"] },
+    "low_battery_alert": { "type": ["null", "boolean"] },
+    "sleep_score_delta": { "type": ["null", "integer"] },
+    "movement_30_sec": { "type": ["null", "string"] },
+    "sleep_phase_5_min": { "type": ["null", "string"] },
+    "efficiency": { "type": ["null", "integer"] },
+    "total_sleep_duration": { "type": ["null", "number"] },
+    "time_in_bed": { "type": ["null", "number"] },
+    "type": { "type": ["null", "string"] },
+    "latency": { "type": ["null", "number"] },
+    "awake_time": { "type": ["null", "number"] },
+    "readiness_score_delta": { "type": ["null", "number"] },
+    "readiness": {
+      "contributors": {
+        "activity_balance": { "type": ["null", "number"] },
+        "body_temperature": { "type": ["null", "number"] },
+        "hrv_balance": { "type": ["null", "number"] },
+        "previous_day_activity": { "type": ["null", "number"] },
+        "previous_night": { "type": ["null", "number"] },
+        "recovery_index": { "type": ["null", "number"] },
+        "resting_heart_rate": { "type": ["null", "number"] },
+        "sleep_balance": { "type": ["null", "number"] }
+      },
+      "score": { "type": ["null", "number"] },
+      "temperature_deviation": { "type": ["null", "number"] },
+      "temperature_trend_deviation": { "type": ["null", "number"] }
+    }
+  }
+}
 
 def get_catalog(schema):
   streams = []
