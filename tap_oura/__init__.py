@@ -76,7 +76,8 @@ schema = {
         "temperature_deviation": { "type": ["null", "number"] },
         "temperature_trend_deviation": { "type": ["null", "number"] }
       }
-    }
+    },
+    "ring_id": { "type": ["null", "string"] }
   }
 }
 
