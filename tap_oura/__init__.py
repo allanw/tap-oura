@@ -13,8 +13,28 @@ schema = {
     "bedtime_end": { "type": ["null", "string"], "format": "date-time" },
     "awake": { "type": ["null", "integer"] },
     "average_breath": { "type": ["null", "number"] },
-    "heart_rate": { "interval": "number", "item": { "type": ["null", "integer"] }, "timestamp": "string" },
-    "hrv": { "interval": "number", "item": { "type": ["null", "integer"] }, "timestamp": "string" },
+    "heart_rate": {
+      "type": ["null", "object"],
+      "properties": {
+        "interval": { "type": ["null", "number"] },
+        "items": {
+          "type": ["null", "array"],
+          "items": { "type": ["null", "number"] }
+        },
+        "timestamp": { "type": ["null", "string"] }
+      }
+    },
+    "hrv": {
+      "type": ["null", "object"],
+      "properties": {
+        "interval": { "type": ["null", "number"] },
+        "items": {
+          "type": ["null", "array"],
+          "items": { "type": ["null", "number"] }
+        },
+        "timestamp": { "type": ["null", "string"] }
+      }
+    },
     "average_heart_rate": { "type": ["null", "number"] },
     "lowest_heart_rate": { "type": ["null", "number"] },
     "average_hrv": { "type": ["null", "number"] },
@@ -37,19 +57,25 @@ schema = {
     "awake_time": { "type": ["null", "number"] },
     "readiness_score_delta": { "type": ["null", "number"] },
     "readiness": {
-      "contributors": {
-        "activity_balance": { "type": ["null", "number"] },
-        "body_temperature": { "type": ["null", "number"] },
-        "hrv_balance": { "type": ["null", "number"] },
-        "previous_day_activity": { "type": ["null", "number"] },
-        "previous_night": { "type": ["null", "number"] },
-        "recovery_index": { "type": ["null", "number"] },
-        "resting_heart_rate": { "type": ["null", "number"] },
-        "sleep_balance": { "type": ["null", "number"] }
-      },
-      "score": { "type": ["null", "number"] },
-      "temperature_deviation": { "type": ["null", "number"] },
-      "temperature_trend_deviation": { "type": ["null", "number"] }
+      "type": ["null", "object"],
+      "properties": {
+        "contributors": {
+          "type": ["null", "object"],
+          "properties": {
+            "activity_balance": { "type": ["null", "number"] },
+            "body_temperature": { "type": ["null", "number"] },
+            "hrv_balance": { "type": ["null", "number"] },
+            "previous_day_activity": { "type": ["null", "number"] },
+            "previous_night": { "type": ["null", "number"] },
+            "recovery_index": { "type": ["null", "number"] },
+            "resting_heart_rate": { "type": ["null", "number"] },
+            "sleep_balance": { "type": ["null", "number"] }
+          }
+        },
+        "score": { "type": ["null", "number"] },
+        "temperature_deviation": { "type": ["null", "number"] },
+        "temperature_trend_deviation": { "type": ["null", "number"] }
+      }
     }
   }
 }
