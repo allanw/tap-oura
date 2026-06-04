@@ -49,6 +49,8 @@ schema = {
     "sleep_score_delta": { "type": ["null", "integer"] },
     "movement_30_sec": { "type": ["null", "string"] },
     "sleep_phase_5_min": { "type": ["null", "string"] },
+    "app_sleep_phase_5_min": { "type": ["null", "string"] },
+    "sleep_phase_30_sec": { "type": ["null", "string"] },
     "efficiency": { "type": ["null", "integer"] },
     "total_sleep_duration": { "type": ["null", "number"] },
     "time_in_bed": { "type": ["null", "number"] },
